@@ -24,7 +24,7 @@ def test_scmplus_basic_mapping():
     assert p["timestamp"] == "2026-05-21T00:00:00Z"
     assert p["endpoint_id"] == 12345
     assert p["protocol"] == "SCM+"
-    assert p["endpoint_type"] == 7
+    assert p["endpoint_type"] == "7"
     assert p["consumption"] == 99999
 
 
