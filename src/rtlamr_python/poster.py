@@ -38,7 +38,7 @@ def _to_payload(record: dict) -> dict | None:
         "timestamp": record["time"],
         "endpoint_id": record["endpoint_id"],
         "protocol": record.get("type", ""),
-        "endpoint_type": str(raw_et) if (raw_et := record.get("endpoint_type")) is not None else record.get("type", ""),
+        "endpoint_type": str(raw_et) if (raw_et := record.get("endpoint_type")) is not None else None,
         "consumption": consumption,
         "tamper": tamper,
     }
