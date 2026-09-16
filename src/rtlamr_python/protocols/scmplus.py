@@ -21,7 +21,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from src import crc
+from rtlamr_python import crc
 
 _STRUCT = struct.Struct(">HBBIIHH")
 _PROTOCOL_ID = 0x1E
@@ -31,7 +31,7 @@ _PACKET_SYMBOLS = 128  # 16 bytes × 8 bits
 
 
 def make_config(chip_length: int = 72):
-    from src.decoder import Config
+    from rtlamr_python.decoder import Config
     return Config(
         chip_length=chip_length,
         preamble_bits=_PREAMBLE.copy(),

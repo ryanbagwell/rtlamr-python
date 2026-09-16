@@ -1,7 +1,7 @@
 """Tests for _apply_config meter ID handling."""
 import argparse
 import pytest
-from main import _apply_config, _DEFAULTS, _CONFIG_KEYS
+from rtlamr_python.cli import _apply_config, _DEFAULTS, _CONFIG_KEYS
 
 
 def _args(**kwargs):

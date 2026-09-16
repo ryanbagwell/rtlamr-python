@@ -1,6 +1,6 @@
 import struct
 import pytest
-from src.crc import checksum, valid, RESIDUE, _INIT
+from rtlamr_python.crc import checksum, valid, RESIDUE, _INIT
 
 
 def _make_packet(endpoint_id: int = 12345678, consumption: int = 987654) -> bytes:

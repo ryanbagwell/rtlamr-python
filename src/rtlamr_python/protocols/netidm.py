@@ -15,12 +15,12 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from src import crc
-from src.protocols.idm import _PREAMBLE, _PACKET_SYMBOLS, _serial_crc_buf
+from rtlamr_python import crc
+from rtlamr_python.protocols.idm import _PREAMBLE, _PACKET_SYMBOLS, _serial_crc_buf
 
 
 def make_config(chip_length: int = 72):
-    from src.decoder import Config
+    from rtlamr_python.decoder import Config
     return Config(
         chip_length=chip_length,
         preamble_bits=_PREAMBLE.copy(),

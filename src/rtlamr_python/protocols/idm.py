@@ -16,7 +16,7 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
-from src import crc
+from rtlamr_python import crc
 
 _PREAMBLE = np.array(
     [int(b) for b in "01010101010101010001011010100011"], dtype=np.uint8
@@ -25,7 +25,7 @@ _PACKET_SYMBOLS = 92 * 8  # 736 bits
 
 
 def make_config(chip_length: int = 72):
-    from src.decoder import Config
+    from rtlamr_python.decoder import Config
     return Config(
         chip_length=chip_length,
         preamble_bits=_PREAMBLE.copy(),

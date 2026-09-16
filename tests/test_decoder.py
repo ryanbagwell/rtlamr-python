@@ -9,9 +9,9 @@ import struct
 import numpy as np
 import pytest
 
-from src.crc import checksum
-from src.decoder import Config, Decoder, magnitude, matched_filter, _PREAMBLE_BITS
-from src.protocols.scmplus import _PROTOCOL_ID
+from rtlamr_python.crc import checksum
+from rtlamr_python.decoder import Config, Decoder, magnitude, matched_filter, _PREAMBLE_BITS
+from rtlamr_python.protocols.scmplus import _PROTOCOL_ID
 
 
 # ---------------------------------------------------------------------------

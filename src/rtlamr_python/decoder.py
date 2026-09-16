@@ -195,7 +195,7 @@ class Decoder:
         self.cfg = cfg or Config()
 
         if parser is None:
-            from src.protocols.scmplus import parse as _default_parse
+            from rtlamr_python.protocols.scmplus import parse as _default_parse
             self._parser: Callable = _default_parse
         else:
             self._parser = parser

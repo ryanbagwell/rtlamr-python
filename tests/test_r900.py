@@ -2,8 +2,8 @@
 
 import pytest
 import numpy as np
-from src.r900_decoder import _GF32, _r900_filter, _r900_quantize
-from src.protocols.r900 import parse_bits, R900
+from rtlamr_python.r900_decoder import _GF32, _r900_filter, _r900_quantize
+from rtlamr_python.protocols.r900 import parse_bits, R900
 
 
 # ---------------------------------------------------------------------------
@@ -126,7 +126,7 @@ def test_r900_as_dict():
 # ---------------------------------------------------------------------------
 
 def test_r900_decoder_config():
-    from src.r900_decoder import R900Decoder
+    from rtlamr_python.r900_decoder import R900Decoder
     d = R900Decoder(chip_length=8)
     assert d.center_freq == 912_380_000
     assert d.sample_rate == 32_768 * 8

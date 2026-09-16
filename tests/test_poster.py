@@ -1,7 +1,7 @@
 """Tests for ApiPoster field mapping (_to_payload)."""
 
 import pytest
-from src.poster import _to_payload
+from rtlamr_python.poster import _to_payload
 
 
 def _base(overrides=None):

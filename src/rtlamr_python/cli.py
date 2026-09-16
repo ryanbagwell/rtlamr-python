@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """rtlamr-python — Multi-protocol ERT smart meter receiver.
 
 Reads IQ samples from an RTL-SDR dongle (or a raw sample file for testing),
@@ -13,19 +12,19 @@ Supported protocols (use --protocol to select; defaults to all Manchester ones):
 
 Usage:
   # All Manchester protocols on live hardware
-  python main.py
+  rtlamr
 
   # Single protocol
-  python main.py --protocol scmplus
+  rtlamr --protocol scmplus
 
   # From a recorded capture file
-  python main.py --sample-file /path/to/capture.bin
+  rtlamr --sample-file /path/to/capture.bin
 
   # Filter to specific meters
-  python main.py --meter-id 12345678
+  rtlamr --meter-id 12345678
 
   # Alternate between Manchester and R900 (different center frequencies)
-  python main.py --protocol scmplus r900
+  rtlamr --protocol scmplus r900
 """
 
 from __future__ import annotations
@@ -38,11 +37,11 @@ import sys
 import time
 from collections import defaultdict
 
-from src.decoder import Config, Decoder
-from src.poster import ApiPoster
-from src.protocols import scm, scmplus, idm, netidm
-from src.r900_decoder import R900Decoder
-from src.sdr import open_source
+from rtlamr_python.decoder import Config, Decoder
+from rtlamr_python.poster import ApiPoster
+from rtlamr_python.protocols import scm, scmplus, idm, netidm
+from rtlamr_python.r900_decoder import R900Decoder
+from rtlamr_python.sdr import open_source
 
 LOG = logging.getLogger(__name__)
 
@@ -64,9 +63,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Multi-protocol ERT smart meter receiver")
     p.add_argument(
         "--config",
-        default="/etc/meter-reading/rtlamr.toml",
+        default=None,
         metavar="PATH",
-        help="TOML config file (default: /etc/meter-reading/rtlamr.toml)",
+        help="TOML config file (default: none)",
     )
     p.add_argument(
         "--verbose",
@@ -151,7 +150,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return p.parse_args(argv)
 
 
-def _load_config(path: str) -> dict:
+def _load_config(path: str | None) -> dict:
+    if path is None:
+        return {}
     import tomllib
     try:
         with open(path, "rb") as f:

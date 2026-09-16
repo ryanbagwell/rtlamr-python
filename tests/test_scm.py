@@ -2,8 +2,8 @@
 
 import struct
 import pytest
-from src.crc import bch_checksum
-from src.protocols.scm import parse, SCM, _PREAMBLE, _PACKET_SYMBOLS
+from rtlamr_python.crc import bch_checksum
+from rtlamr_python.protocols.scm import parse, SCM, _PREAMBLE, _PACKET_SYMBOLS
 
 
 def _make_scm_packet(
@@ -98,7 +98,7 @@ def test_as_dict_contains_required_fields():
 
 
 def test_make_config_produces_correct_preamble():
-    from src.protocols.scm import make_config
+    from rtlamr_python.protocols.scm import make_config
     import numpy as np
     cfg = make_config(chip_length=8)
     assert cfg.packet_symbols == _PACKET_SYMBOLS

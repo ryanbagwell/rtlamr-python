@@ -1,6 +1,6 @@
 """Tests for multi-protocol _apply_config normalization."""
 import argparse
-from main import _apply_config, _DEFAULTS, _CONFIG_KEYS
+from rtlamr_python.cli import _apply_config, _DEFAULTS, _CONFIG_KEYS
 
 
 def _args(**kw):

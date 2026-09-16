@@ -32,8 +32,8 @@ from typing import Any
 
 import numpy as np
 
-from src.decoder import magnitude, matched_filter, _search, _next_power_of_2
-from src.protocols.r900 import R900, parse_bits, _R900_CENTER_FREQ
+from rtlamr_python.decoder import magnitude, matched_filter, _search, _next_power_of_2
+from rtlamr_python.protocols.r900 import R900, parse_bits, _R900_CENTER_FREQ
 
 # R900 protocol constants (from rtlamr-go/r900/r900.go)
 _DATA_RATE = 32_768

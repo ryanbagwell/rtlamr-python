@@ -2,9 +2,9 @@
 
 import struct
 import pytest
-from src.crc import checksum, RESIDUE
-from src.protocols.idm import parse as idm_parse, IDM, _PREAMBLE, _PACKET_SYMBOLS
-from src.protocols.netidm import parse as netidm_parse, NetIDM
+from rtlamr_python.crc import checksum, RESIDUE
+from rtlamr_python.protocols.idm import parse as idm_parse, IDM, _PREAMBLE, _PACKET_SYMBOLS
+from rtlamr_python.protocols.netidm import parse as netidm_parse, NetIDM
 
 
 def _embed_crc(raw: bytearray, start: int, end: int) -> None:
@@ -76,7 +76,7 @@ def _make_idm_packet(
     c = checksum(bytes(raw[9:13]))
     # We need ((c << 8) ^ table[(c >> 8) ^ x_high]) continued with x_low == RESIDUE
     # Easier: brute-force search for x in 0..65535
-    from src.crc import _table as _ccitt_table
+    from rtlamr_python.crc import _table as _ccitt_table
     for crc_val in range(0x10000):
         x_high = (crc_val >> 8) & 0xFF
         x_low = crc_val & 0xFF
@@ -130,7 +130,7 @@ def test_idm_as_dict():
 
 
 def test_idm_make_config():
-    from src.protocols.idm import make_config
+    from rtlamr_python.protocols.idm import make_config
     import numpy as np
     cfg = make_config(chip_length=8)
     assert cfg.packet_symbols == _PACKET_SYMBOLS

@@ -1,7 +1,7 @@
 import struct
 import pytest
-from src.crc import checksum
-from src.protocols.scmplus import parse, SCMPlus, _PROTOCOL_ID
+from rtlamr_python.crc import checksum
+from rtlamr_python.protocols.scmplus import parse, SCMPlus, _PROTOCOL_ID
 
 
 def _make_packet(
